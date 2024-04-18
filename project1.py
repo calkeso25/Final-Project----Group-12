@@ -17,7 +17,7 @@ class Player:
         if ticket_counter < num_tickets:
             ticket_number = int(input('What number would you like to choose?: '))
             ticket = Ticket(ticket_number, game_level)
-            tickets.append(ticket)
+            self.tickets.append(ticket)
             ticket_counter += 1
         return tickets
     
@@ -33,7 +33,7 @@ class Ticket:
         else:
             message = ('You lose')
         print(message)
-        return  message
+        return message
         
 def main(name, budget):
     player = Player(name)

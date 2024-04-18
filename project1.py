@@ -13,12 +13,12 @@ class Player:
         return num_tickets
     
     def add_ticket(num_tickets, game_level):
-        tickets = 0
-        if tickets < num_tickets:
+        ticket_counter = 0
+        if ticket_counter < num_tickets:
             ticket_number = int(input('What number would you like to choose?: '))
             ticket = Ticket(ticket_number, game_level)
             tickets.append(ticket)
-            tickets += 1
+            ticket_counter += 1
         return tickets
     
 class Ticket:

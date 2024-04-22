@@ -28,6 +28,7 @@ class Ticket:
         self.game_level = game_level
         
     def check_ticket(number_selected, random_number):
+        #add to print how many they won and how many they lost
         if number_selected == random_number:
             message = ('You win')
         else:
@@ -40,11 +41,16 @@ def main(name, budget):
    # print(player.name)
     budget = int(budget)
     #print(budget)
-    ticket_price = 10
+    ticket_price = 10 
     num_tickets = player.get_number_tickets(budget, ticket_price)
     print(num_tickets)
-    player.add_ticket(num_tickets, 'easy')
+    ticket_counter = 0
+    while ticket_counter < num_tickets:
+        game_level = input("Enter game level ('easy' or 'hard') ")
+        player.add_ticket(num_tickets, game_level)
+        ticket_counter+=1
     for ticket in player.tickets:
+        #print(ticket)
         if ticket.game_level == 'easy':
             random_num = random.randint(0,100)
         elif ticket.game_level == 'hard':

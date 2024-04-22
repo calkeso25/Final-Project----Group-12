@@ -8,18 +8,18 @@ class Player:
         self.name = name
         self.tickets = []
     
-    def get_number_tickets(budget, ticket_price):
+    def get_number_tickets(self, budget, ticket_price):
         num_tickets = round(budget/ticket_price, 0)
         return num_tickets
     
-    def add_ticket(num_tickets, game_level):
+    def add_ticket(self, num_tickets, game_level):
         ticket_counter = 0
         if ticket_counter < num_tickets:
             ticket_number = int(input('What number would you like to choose?: '))
             ticket = Ticket(ticket_number, game_level)
             self.tickets.append(ticket)
             ticket_counter += 1
-        return tickets
+        return ticket_counter
     
 class Ticket:
     
@@ -37,9 +37,9 @@ class Ticket:
         
 def main(name, budget):
     player = Player(name)
-    print(player.name)
+   # print(player.name)
     budget = int(budget)
-    print(budget)
+    #print(budget)
     ticket_price = 10
     num_tickets = player.get_number_tickets(budget, ticket_price)
     print(num_tickets)
@@ -49,7 +49,7 @@ def main(name, budget):
             random_num = random.randint(0,100)
         elif ticket.game_level == 'hard':
             random_num = random.randint(0, 1000)
-        Ticket.check_ticket(ticket.number_seleced, random_num)
+        Ticket.check_ticket(ticket.number_selected, random_num)
         
 def parse_args(arglist):
     """ Parse command-line arguments.

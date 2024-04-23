@@ -21,6 +21,15 @@ class Player:
             ticket_counter += 1
         return ticket_counter
     
+    def generate_random_number(self, game_level):
+        if game_level == 'easy':
+            return random.randint(0, 100)
+        elif game_level == 'hard':
+            return random.randint(0, 1000)
+        else:
+            raise ValueError("Invalid game level")
+
+    
 class Ticket:
     
     def __init__(self, number_selected, game_level):

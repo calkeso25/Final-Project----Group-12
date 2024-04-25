@@ -9,5 +9,7 @@ def test_ticket():
 
 #Testing the person class
 
+def test_person():
+  person1 = Person('test_person')
 
 #Testing the main function

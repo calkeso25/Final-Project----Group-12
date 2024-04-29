@@ -13,13 +13,10 @@ class Player:
         return num_tickets
     
     def add_ticket(self, num_tickets, game_level):
-        ticket_counter = 0
-        if ticket_counter < num_tickets:
+        if len(self.tickets) < num_tickets:
             ticket_number = int(input('What number would you like to choose?: '))
             ticket = Ticket(ticket_number, game_level)
             self.tickets.append(ticket)
-            ticket_counter += 1
-        return ticket_counter
     
     def generate_random_number(self, game_level):
         if game_level == 'easy':
@@ -47,7 +44,7 @@ class Ticket:
         
 def main(name, budget):
     player = Player(name)
-   # print(player.name)
+    #print(player.name)
     budget = int(budget)
     #print(budget)
     ticket_price = 10 

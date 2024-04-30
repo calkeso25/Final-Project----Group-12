@@ -33,9 +33,9 @@ class Ticket:
         self.number_selected = number_selected
         self.game_level = game_level
         
-    def check_ticket(number_selected, random_number):
+    def check_ticket(random_number):
         #add to print how many they won and how many they lost
-        if number_selected == random_number:
+        if self.number_selected == random_number:
             message = ('You win')
         else:
             message = ('You lose')
@@ -61,7 +61,7 @@ def main(name, budget):
             random_num = random.randint(0,100)
         elif ticket.game_level == 'hard':
             random_num = random.randint(0, 1000)
-        Ticket.check_ticket(ticket.number_selected, random_num)
+        Ticket.check_ticket(random_num)
         
 def parse_args(arglist):
     """ Parse command-line arguments.

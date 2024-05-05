@@ -12,5 +12,6 @@ def test_ticket():
 def test_person():
   person1 = Person('test_person')
   assert person1.name == 'test_person'
+  assert person1.get
 
 #Testing the main function

@@ -39,7 +39,6 @@ class Ticket:
             message = ('You win')
         else:
             message = ('You lose')
-        print(message)
         return message
         
 def main(name, budget):
@@ -51,17 +50,22 @@ def main(name, budget):
     num_tickets = player.get_number_tickets(budget, ticket_price)
     print(num_tickets)
     ticket_counter = 0
+    amount_won = 0
     while ticket_counter < num_tickets:
         game_level = input("Enter game level ('easy' or 'hard') ")
         player.add_ticket(num_tickets, game_level)
         ticket_counter+=1
     for ticket in player.tickets:
         #print(ticket)
-        if ticket.game_level == 'easy':
-            random_num = random.randint(0,100)
-        elif ticket.game_level == 'hard':
-            random_num = random.randint(0, 1000)
-        Ticket.check_ticket(random_num)
+        random_num = ticket.generate_random_number(ticket.game_level)
+        result = ticket.check_ticket(random_num)
+        print(result)
+        if result == 'You win':
+            if ticket.game_level == 'easy'
+                amount_won += 100
+            if ticket.game_level == 'hard'
+                amount_won += 1000
+    print(f"{player.name} won {amount_won} dollars")
         
 def parse_args(arglist):
     """ Parse command-line arguments.

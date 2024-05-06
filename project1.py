@@ -70,7 +70,20 @@ class Player:
                     print('Please enter valid number')
             ticket = Ticket(ticket_number, game_level)
             self.tickets.append(ticket)
-
+ def count_wins_and_losses(self):
+        '''Count the number of wins and losses for the player's tickets.
+         Returns:
+            tuple: A tuple containing the counts of wins and losses.
+        driver: Kesi Harford
+        '''
+        wins = 0
+        losses = 0
+        for ticket in self.tickets:
+            if ticket.prize > 0:
+                wins += 1
+            else:
+                losses += 1
+        return wins, losses
     
 class Ticket:
     '''class for creating tickets for the lottery game 
@@ -95,6 +108,7 @@ class Ticket:
         
         Args:
             random_number(int): winning number generated 
+            game_level(str): which game level the ticket is associated with 
         Returns:
             prize(int): how much a player won for the ticket 
             
@@ -136,6 +150,7 @@ class Ticket:
             game_level(str): game level associated with ticket 
         Returns:
             random_num(int): winning number 
+        driver: Kesi Harford
         '''
         if game_level == 'easy':
             random_num = random.randint(0, 100)

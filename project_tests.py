@@ -10,10 +10,10 @@ def test_ticket():
   assert project1.check_ticket(ticket1, 495) == 10
   assert project1.check_ticket(ticket1, 475) == 0
   ticket2 = Ticket(500, 'hard')
-  assert project1.check_ticket(ticket1, 500) == 100
-  assert project1.check_ticket(ticket1, 499) == 50
-  assert project1.check_ticket(ticket1, 495) == 10
-  assert project1.check_ticket(ticket1, 475) == 0
+  assert project1.check_ticket(ticket1, 500) == 1000
+  assert project1.check_ticket(ticket1, 490) == 500
+  assert project1.check_ticket(ticket1, 455) == 100
+  assert project1.check_ticket(ticket1, 340) == 0
 
 #Testing the person class
 

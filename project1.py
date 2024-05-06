@@ -44,7 +44,8 @@ class Player:
             game_level(str): game level player would like per ticket 
         Side Effects:
             populates the tickets attribute 
-            
+
+        Driver: Sera Belasco
         Navigator: Lily Oakes
         '''
         if len(self.tickets) < num_tickets:

@@ -153,6 +153,7 @@ def main(name, budget):
         budget(int): players price budget for tickets 
         
     Driver: Lily Oakes
+    Navigator: Sera Belasco
     '''
     ticket_price = 5
     player = Player(name)

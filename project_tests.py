@@ -5,7 +5,7 @@ import project1
 
 def test_ticket():
   ticket1 = Ticket(5, 'easy')
-  assert project1.check_ticket(5) == 'You win'
+  assert project1.check_ticket(5) == 'You guessed the number correctly!'
 
 #Testing the person class
 

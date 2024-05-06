@@ -90,7 +90,7 @@ class Ticket:
         self.number_selected = number_selected
         self.game_level = game_level
         
-    def check_ticket(self, random_number, game_level):
+    def check_ticket(self, random_number):
         '''checks how close ticket number is to winning number and calculates prize
         
         Args:
@@ -102,7 +102,7 @@ class Ticket:
         Driver: Lily Oakes
         '''
         #add to print how many they won and how many they lost
-        if game_level == 'easy':
+        if self.game_level == 'easy':
             if self.number_selected == random_number:
                 print('You guessed the number correctly!')
                 prize = 100
@@ -115,7 +115,7 @@ class Ticket:
             else:
                 print(f'You lose. The correct number was {random_number} and you guessed {self.number_selected}')
                 prize = 0
-        elif game_level == 'hard':
+        elif self.game_level == 'hard':
             if self.number_selected == random_number:
                 print('You guessed the number correctly!')
                 prize = 1000
@@ -176,7 +176,7 @@ def main(name, budget):
     os.system('cls||clear')
     for ticket in player.tickets:
         random_num = ticket.generate_random_number(ticket.game_level)
-        result = ticket.check_ticket(random_num, ticket.game_level)
+        result = ticket.check_ticket(random_num)
         player.account+=result
     print(f"Thanks for playing {player.name}! You won {player.account} dollars")
         

@@ -10,7 +10,8 @@ def test_ticket():
 #Testing the person class
 
 def test_person():
-  person1 = Person('test_person')
+  person1 = Person('test_person') 
   assert person1.get_number_tickets(20, 4) == 5
+  person1.add_ticket()
 
 #Testing the main function

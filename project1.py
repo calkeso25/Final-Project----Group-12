@@ -95,7 +95,6 @@ class Ticket:
         
         Args:
             random_number(int): winning number generated 
-            game_level(str): which game level the ticket is associated with 
         Returns:
             prize(int): how much a player won for the ticket 
             

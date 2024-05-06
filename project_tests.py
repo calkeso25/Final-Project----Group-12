@@ -4,8 +4,9 @@ import project1
 #Testing the ticket class
 
 def test_ticket():
-  ticket1 = Ticket(5, 'easy')
-  assert project1.check_ticket(5) == 'You guessed the number correctly!'
+  ticket1 = Ticket(503, 'easy')
+  assert project1.check_ticket(ticket1, 503) == 'You guessed the number correctly!'
+  assert project1.check_ticket(ticket1, 495) == "
 
 #Testing the person class
 

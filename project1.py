@@ -44,6 +44,8 @@ class Player:
             game_level(str): game level player would like per ticket 
         Side Effects:
             populates the tickets attribute 
+            
+        Navigator: Lily Oakes
         '''
         if len(self.tickets) < num_tickets:
             while True:
@@ -95,6 +97,8 @@ class Ticket:
             game_level(str): which game level the ticket is associated with 
         Returns:
             prize(int): how much a player won for the ticket 
+            
+        Driver: Lily Oakes
         '''
         #add to print how many they won and how many they lost
         if game_level == 'easy':
@@ -147,6 +151,8 @@ def main(name, budget):
     Args:
         name(str): players name
         budget(int): players price budget for tickets 
+        
+    Driver: Lily Oakes
     '''
     ticket_price = 5
     player = Player(name)

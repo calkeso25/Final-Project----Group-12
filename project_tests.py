@@ -24,3 +24,6 @@ def test_person():
   assert len(person1.tickets) == 4
 
 #Testing the main function
+
+def test_main():
+  

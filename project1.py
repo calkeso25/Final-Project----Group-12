@@ -32,15 +32,16 @@ class Player:
             ticket_price(int): price per ticket 
         Returns:
             num_tickets(int): calculated number of tickets a person can buy 
+            
+        Driver: Lily Oakes
         '''
         num_tickets = round(budget//ticket_price, 0)
         return num_tickets
     
-    def add_ticket(self, num_tickets, game_level):
+    def add_ticket(self, game_level):
         '''adds ticket to players ticket list 
         
         Args:
-            num_tickets(int): number of tickets a player can have 
             game_level(str): game level player would like per ticket 
         Side Effects:
             populates the tickets attribute 
@@ -48,33 +49,34 @@ class Player:
         Driver: Sera Belasco
         Navigator: Lily Oakes
         '''
-        if len(self.tickets) < num_tickets:
-            while True:
-                try:
-                    if game_level == 'easy':
-                        while True:
-                            ticket_number = int(input('Choose a number between 0-100: '))
-                            if ticket_number in range(0,101):
-                                break
-                            else:
-                                print('please enter number within range 0-100')
-                    elif game_level == 'hard':
-                        while True:
-                            ticket_number = int(input('Choose a number between 0-1000: '))
-                            if ticket_number in range(0, 1001):
-                                break
-                            else:
-                                print('please enter number within range 0-1000')
-                    break
-                except:
-                    print('Please enter valid number')
-            ticket = Ticket(ticket_number, game_level)
-            self.tickets.append(ticket)
- def count_wins_and_losses(self):
+        while True:
+            try:
+                if game_level == 'easy':
+                    while True:
+                        ticket_number = int(input('Choose a number between 0-100: '))
+                        if ticket_number in range(0,101):
+                            break
+                        else:
+                            print('please enter number within range 0-100')
+                elif game_level == 'hard':
+                    while True:
+                        ticket_number = int(input('Choose a number between 0-1000: '))
+                        if ticket_number in range(0, 1001):
+                            break
+                        else:
+                            print('please enter number within range 0-1000')
+                break
+            except:
+                print('Please enter valid number')
+        ticket = Ticket(ticket_number, game_level)
+        self.tickets.append(ticket)
+    
+    def count_wins_and_losses(self):
         '''Count the number of wins and losses for the player's tickets.
          Returns:
             tuple: A tuple containing the counts of wins and losses.
         driver: Kesi Harford
+        navigator: Lily Oakes
         '''
         wins = 0
         losses = 0
@@ -99,9 +101,11 @@ class Ticket:
         Args:
             number_selected(int): number the player selected for the ticket 
             game_level(str): which game level the ticket is associated with 
+            prize(int): how much each ticket won
         '''
         self.number_selected = number_selected
         self.game_level = game_level
+        self.prize = 0
         
     def check_ticket(self, random_number):
         '''checks how close ticket number is to winning number and calculates prize
@@ -118,30 +122,30 @@ class Ticket:
         if self.game_level == 'easy':
             if self.number_selected == random_number:
                 print('You guessed the number correctly!')
-                prize = 100
+                self.prize = 100
             elif (self.number_selected in range(random_number-5, random_number))or (self.number_selected in range(random_number, random_number+5)):
                 print(f'The correct number was {random_number} and you guessed {self.number_selected}. You win $50')
-                prize = 50
+                self.prize = 50
             elif (self.number_selected in range(random_number-10, random_number))or (self.number_selected in range(random_number, random_number+10)):
                 print(f'The correct number was {random_number} and you guessed {self.number_selected}. You win $10')
-                prize = 10
+                self.prize = 10
             else:
                 print(f'You lose. The correct number was {random_number} and you guessed {self.number_selected}')
-                prize = 0
+                self.prize = 0
         elif self.game_level == 'hard':
             if self.number_selected == random_number:
                 print('You guessed the number correctly!')
-                prize = 1000
+                self.prize = 1000
             elif (self.number_selected in range(random_number-30, random_number))or (self.number_selected in range(random_number, random_number+30)):
                 print(f'The correct number was {random_number} and you guessed {self.number_selected}. You win $500')
-                prize = 500
+                self.prize = 500
             elif (self.number_selected in range(random_number-80, random_number))or (self.number_selected in range(random_number, random_number+80)):
                 print(f'The correct number was {random_number} and you guessed {self.number_selected}. You win $100')
-                prize = 100
+                self.prize = 100
             else:
                 print(f'You lose. The correct number was {random_number} and you guessed {self.number_selected}')
-                prize = 0
-        return prize
+                self.prize = 0
+        return self.prize
     
     def generate_random_number(self, game_level):
         '''generates random winning number 
@@ -170,11 +174,9 @@ def main(name, budget):
     Driver: Lily Oakes
     Navigator: Sera Belasco
     '''
-    ticket_price = 5
+    ticket_price = 10
     player = Player(name)
-    #print(player.name)
     budget = int(budget)
-    #print(budget)
     num_tickets = player.get_number_tickets(budget, ticket_price)
     print(f'You get {num_tickets} tickets')
     ticket_counter = 1
@@ -185,14 +187,15 @@ def main(name, budget):
                 break
             else:
                 print('please enter valid game level')
-        player.add_ticket(num_tickets, game_level)
+        player.add_ticket(game_level)
         ticket_counter+=1
     os.system('cls||clear')
     for ticket in player.tickets:
         random_num = ticket.generate_random_number(ticket.game_level)
         result = ticket.check_ticket(random_num)
         player.account+=result
-    print(f"Thanks for playing {player.name}! You won {player.account} dollars")
+    winnings = player.count_wins_and_losses()
+    print(f"Thanks for playing {player.name}! You won {winnings[0]} game(s) and lost {winnings[1]} game(s). You won {player.account} dollars")
         
 def parse_args(arglist):
     """ Parse command-line arguments.

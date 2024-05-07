@@ -22,8 +22,3 @@ def test_person():
   assert person1.get_number_tickets(20, 4) == 5
   person1.add_ticket(4, 'easy')
   assert len(person1.tickets) == 4
-
-#Testing the main function
-
-def test_main():
-  

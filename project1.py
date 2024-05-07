@@ -38,20 +38,20 @@ class Player:
         num_tickets = round(budget//ticket_price, 0)
         return num_tickets
     
-    def add_ticket(self, game_level):
-        '''adds ticket to players ticket list 
+    def create_ticket(self, game_level): 
+        '''creates a ticket for player  
         
         Args:
             game_level(str): game level player would like per ticket 
         Side Effects:
-            populates the tickets attribute 
+            creates a ticket object  
 
         Driver: Sera Belasco
         Navigator: Lily Oakes
         '''
         while True:
             try:
-                if game_level == 'easy':
+                if game_level == 'easy': 
                     while True:
                         ticket_number = int(input('Choose a number between 0-100: '))
                         if ticket_number in range(0,101):
@@ -69,6 +69,19 @@ class Player:
             except:
                 print('Please enter valid number')
         ticket = Ticket(ticket_number, game_level)
+        return ticket
+    
+    def add_ticket_to_player(self, ticket):
+        '''adds ticket objects to players ticket attribute
+        
+        Args:
+            ticket(ticket object): ticket object to add to attribute 
+        Side Effects:
+            populates players ticket attribute
+            
+        Driver: Lily Oakes
+        Navigator: 
+        '''
         self.tickets.append(ticket)
     
     def count_wins_and_losses(self):
@@ -187,7 +200,8 @@ def main(name, budget):
                 break
             else:
                 print('please enter valid game level')
-        player.add_ticket(game_level)
+        ticket = player.create_ticket(game_level)
+        player.add_ticket_to_player(ticket)
         ticket_counter+=1
     os.system('cls||clear')
     for ticket in player.tickets:

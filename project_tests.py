@@ -20,8 +20,13 @@ def test_ticket():
 def test_person():
   person1 = project1.Player('test_person') 
   assert person1.get_number_tickets(20, 4) == 5
-  #person1.add_ticket('easy')
-  #assert len(person1.tickets) == 1
+  ticket = project1.Ticket(78, 'easy')
+  person1.add_ticket_to_player(ticket)
+  assert len(person1.tickets) == 1
+  ticket2 = project1.Ticket(320, 'hard')
+  person1.add_ticket_to_player(ticket2)
+  assert len(person1.tickets)== 2
+
 
 #Testing the main function
 

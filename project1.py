@@ -34,6 +34,7 @@ class Player:
             num_tickets(int): calculated number of tickets a person can buy 
             
         Driver: Lily Oakes
+        Navigator: Sera Belasco
         '''
         num_tickets = round(budget//ticket_price, 0)
         return num_tickets
@@ -79,8 +80,8 @@ class Player:
         Side Effects:
             populates players ticket attribute
             
-        Driver: Lily Oakes
-        Navigator: 
+        Driver: Sera Belasco
+        Navigator: Lily Oakes
         '''
         self.tickets.append(ticket)
     
@@ -88,8 +89,8 @@ class Player:
         '''Count the number of wins and losses for the player's tickets.
          Returns:
             tuple: A tuple containing the counts of wins and losses.
-        driver: Kesi Harford
-        navigator: Lily Oakes
+        Driver: Kesi Harford
+        Navigator: Lily Oakes
         '''
         wins = 0
         losses = 0
@@ -130,6 +131,7 @@ class Ticket:
             prize(int): how much a player won for the ticket 
             
         Driver: Lily Oakes
+        Navigator: Sera Belasco
         '''
         #add to print how many they won and how many they lost
         if self.game_level == 'easy':
@@ -167,7 +169,8 @@ class Ticket:
             game_level(str): game level associated with ticket 
         Returns:
             random_num(int): winning number 
-        driver: Kesi Harford
+        Driver: Kesi Harford
+        Navigator: Sera Belasco
         '''
         if game_level == 'easy':
             random_num = random.randint(0, 100)
@@ -209,7 +212,8 @@ def main(name, budget):
         result = ticket.check_ticket(random_num)
         player.account+=result
     winnings = player.count_wins_and_losses()
-    print(f"Thanks for playing {player.name}! You won {winnings[0]} game(s) and lost {winnings[1]} game(s). You won {player.account} dollars")
+    print(f"Thanks for playing {player.name}! You won {winnings[0]} game(s) and lost {winnings[1]}\
+        game(s). You won {player.account} dollars")
         
 def parse_args(arglist):
     """ Parse command-line arguments.

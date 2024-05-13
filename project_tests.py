@@ -28,7 +28,5 @@ def test_person():
   assert len(person1.tickets)== 2
 
 
-#Testing the main function
-
-def test_main():
-  pass
+#Main function is not checked with a unit test because it requires user input
+#However, the main function mostly invokes other methods, which are all tested

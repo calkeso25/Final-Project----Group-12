@@ -52,6 +52,8 @@ class Player:
         '''
         while True:
             try:
+                #gets ticket number by asking user input to enter a number;
+                #also checks that number they selected is in correct range
                 if game_level == 'easy': 
                     while True:
                         ticket_number = int(input('Choose a number between 0-100: '))
@@ -197,6 +199,7 @@ def main(name, budget):
     print(f'You get {num_tickets} tickets')
     ticket_counter = 1
     while ticket_counter <= num_tickets:
+        #gets game level for each ticket while checking user is entering valid input
         while True:
             game_level = input(f"Enter game level for ticket {ticket_counter} ('easy' or 'hard'): ")
             if game_level == 'easy' or game_level == 'hard':
@@ -206,14 +209,13 @@ def main(name, budget):
         ticket = player.create_ticket(game_level)
         player.add_ticket_to_player(ticket)
         ticket_counter+=1
-    os.system('cls||clear')
+    os.system('cls||clear') #clear terminal screen
     for ticket in player.tickets:
         random_num = ticket.generate_random_number(ticket.game_level)
         result = ticket.check_ticket(random_num)
         player.account+=result
     winnings = player.count_wins_and_losses()
-    print(f"Thanks for playing {player.name}! You won {winnings[0]} game(s) and lost {winnings[1]}\
-        game(s). You won {player.account} dollars")
+    print(f"Thanks for playing {player.name}! You won {winnings[0]} game(s) and lost {winnings[1]} game(s). You won {player.account} dollars")
         
 def parse_args(arglist):
     """ Parse command-line arguments.
